@@ -1,6 +1,32 @@
 @import 'core/settings';
 
 body {
-	background: url('../images/logo-adalab-80px.png') center center no-repeat $color-white;
+	width: 100vw;
 	height: 100vh;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.title {
+	text-align: center;
+}
+
+.selection {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 50px;
+}
+
+.cards {
+	display: flex;
+	justify-content: center;
+}
+
+.card__style {
+	list-style: none;
+	margin: 10px;
+	background-image: url ('assets/images/adalab-background.png');
+	width: 170px;
+	height: 200px;
+	border: 1px solid $color-black;
+	border-radius: 5px;
 }
