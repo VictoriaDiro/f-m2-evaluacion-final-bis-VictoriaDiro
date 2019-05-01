@@ -30,7 +30,6 @@ body {
 .card__style {
   list-style: none;
   margin: 10px;
-  background-image: url "assets/images/adalab-background.png";
   width: 170px;
   height: 200px;
   border: 1px solid #000000;

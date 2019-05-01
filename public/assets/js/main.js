@@ -19,6 +19,7 @@
 const starButton = document.querySelector('.star__button');
 const input = document.querySelector('.input');
 let cards = document.querySelector('.cards');
+const backCard = 'https://via.placeholder.com/160x195/30d9c4/ffffff/?text=ADALAB';
 
 function selectNumberCards() {
 
@@ -35,19 +36,25 @@ function selectNumberCards() {
         cardItem.classList.add('card__style');
 
         const image = document.createElement('img');
-        image.src = data[i].image 
-
-        console.log(image);
+        image.src = backCard;
 
         cards.appendChild(cardItem);
         cardItem.appendChild(image);
 
+        function changeSide() {
+          if(image.src === backCard) {
+            image.src = data[i].image;
+          }else {
+            image.src = backCard;
+          }
+        }
+        cardItem.addEventListener('click', changeSide);
       }
-
     });
 }
 
 starButton.addEventListener('click', selectNumberCards);
+
 
   // localStorage.setItem('inputValue', 4, 6, 8);
   // const inputStorage = localStorage.getItem(inputValue);
