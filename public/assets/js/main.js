@@ -38,12 +38,12 @@ const selectNumberCards = () => {
   }
 
   fetch(url)
+
     .then(function(response) {
       return response.json();
     })
     .then(function(data) {
       cards.innerHTML = '';
-      let nameItem = '';
 
       for(let i = 0; i < data.length; i++) {
 
@@ -54,14 +54,23 @@ const selectNumberCards = () => {
         const image = document.createElement('img');
         image.src = backCard;
 
-        cards.appendChild(cardItem);
+        const nameItem = document.createElement('p');
+        const newNameContent = document.createTextNode(data[i].name);
+        nameItem.classList.add('name__style');
+        nameItem.classList.add('hidden');
+
+        nameItem.appendChild(newNameContent);
         cardItem.appendChild(image);
+        cards.appendChild(cardItem);
+        cardItem.appendChild(nameItem);
 
         const changeSide = () => {
           if(image.src === backCard) {
             image.src = data[i].image;
+            nameItem.classList.remove('hidden');
           }else {
             image.src = backCard;
+            nameItem.classList.add('hidden');
           }
         }
 
@@ -76,20 +85,8 @@ const selectNumberCards = () => {
         }
 
         // PINTAR NOMBRE
-        const showName = () => {
-
-          nameItem = document.createElement('p');
-          cardItem.appendChild(nameItem);
-
-          const newNameContent = document.createTextNode(data[i].name);
-          nameItem.appendChild(newNameContent);
-
-          nameItem.classList.add('name__style');
-        }
-
         cardItem.addEventListener('click', selectFav);
-
-        cardItem.addEventListener('click', showName);
+        //cardItem.addEventListener('click', showName);
       }
     });
 }
