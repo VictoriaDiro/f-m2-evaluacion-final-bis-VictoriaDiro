@@ -66,9 +66,20 @@ const selectNumberCards = () => {
 
         // CAMBIO DE CARA DE CARTA
         cardItem.addEventListener('click', changeSide);
+
+        // SELECCIONAR FAVORITO
+        const selectFav = ()=> {
+          if(data[i].fav === true) {
+            cardItem.classList.add('fav__item');
+          }
+        }
+
+        cardItem.addEventListener('click', selectFav);
       }
     });
 }
 
 // BÚSQUEDA DE BARAJA
 starButton.addEventListener('click', selectNumberCards);
+
+
