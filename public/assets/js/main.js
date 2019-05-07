@@ -5,7 +5,6 @@ const starButton = document.querySelector('.star__button');
 let cards = document.querySelector('.cards');
 const backCard = 'https://via.placeholder.com/160x195/30d9c4/ffffff/?text=ADALAB';
 let input = document.querySelectorAll('.input');
-console.log(input)
 
 // LOCALSTORAGE
 const saveData = value => {
@@ -29,6 +28,7 @@ getSaveData('myInput');
 const selectNumberCards = () => {
 
   let url = '';
+
   for(let i = 0; i < input.length; i++) {
     if(input[i].checked === true) {
       url = `https://raw.githubusercontent.com/Adalab/cards-data/master/${input[i].value}.json`;
@@ -43,6 +43,7 @@ const selectNumberCards = () => {
     })
     .then(function(data) {
       cards.innerHTML = '';
+      let nameItem = '';
 
       for(let i = 0; i < data.length; i++) {
 
@@ -74,14 +75,26 @@ const selectNumberCards = () => {
           }
         }
 
+        // PINTAR NOMBRE
+        const showName = () => {
+
+          nameItem = document.createElement('p');
+          cardItem.appendChild(nameItem);
+
+          const newNameContent = document.createTextNode(data[i].name);
+          nameItem.appendChild(newNameContent);
+
+          nameItem.classList.add('name__style');
+        }
+
         cardItem.addEventListener('click', selectFav);
+
+        cardItem.addEventListener('click', showName);
       }
     });
 }
 
 // BÚSQUEDA DE BARAJA
 starButton.addEventListener('click', selectNumberCards);
-
-
 
 //# sourceMappingURL=main.js.map
