@@ -59,10 +59,28 @@ const selectNumberCards = () => {
         nameItem.classList.add('name__style');
         nameItem.classList.add('hidden');
 
+        // PINTAR NOMBRE
         nameItem.appendChild(newNameContent);
         cardItem.appendChild(image);
         cards.appendChild(cardItem);
         cardItem.appendChild(nameItem);
+
+          // INTERACCIÓN DEL JUEGO
+        function startGame () {
+          if(data[i].pair === "1") {
+            image[i].src = data[i].image;
+          } else if (data[i].pair === "4") {
+            image[i].src = data[i].image;
+          } else if (data[i].pair === "25") {
+            image[i].src = data[i].image;
+          } else if (data[i].pair === "150") {
+            image[i].src = data[i].image;
+            console.log(data[i].pair)
+          } else {
+            image.src = backCard;
+          }
+        }
+
 
         const changeSide = () => {
           if(image.src === backCard) {
@@ -73,6 +91,8 @@ const selectNumberCards = () => {
             nameItem.classList.add('hidden');
           }
         }
+
+        cardItem.addEventListener('click',startGame);
 
         // CAMBIO DE CARA DE CARTA
         cardItem.addEventListener('click', changeSide);
@@ -86,10 +106,11 @@ const selectNumberCards = () => {
 
         // PINTAR NOMBRE
         cardItem.addEventListener('click', selectFav);
-        //cardItem.addEventListener('click', showName);
       }
     });
 }
 
 // BÚSQUEDA DE BARAJA
 starButton.addEventListener('click', selectNumberCards);
+
+
