@@ -70,7 +70,7 @@ const selectNumberCards = () => {
         // SELECCIONAR FAVORITO
         const selectFav = ()=> {
           if(data[i].fav === true) {
-            cardItem.classList.add('fav__item');
+            cardItem.classList.toggle('fav__item');
           }
         }
 
