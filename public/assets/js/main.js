@@ -9,42 +9,24 @@ console.log(input)
 
 // LOCALSTORAGE
 const saveData = value => {
-  localStorage.setItem('myInput', JSON.stringify(value));
+  localStorage.setItem('myInput', value);
 };
 
 const getSaveData = value => {
-  return JSON.parse(localStorage.getItem(value));
+  const getData = localStorage.getItem(value);
+  if(getData !== null) {
+    for(let i = 0; i < input.length; i++) {
+      if(input[i].value === getData) {
+        input[i].checked = true;
+      }
+    }
+  }
 }
 
-// const loadSaveInput = () => {
-//   const saveInput = getSaveData('myInput');
-//   saveInput.checked.innerHTML = true;
-// }
-
-// loadSaveInput();
-
-
-// JSON.parse(localStorage.getItem('myInput'));
-
-
-
-// let getInputElement = '';
-
-// function getInput() {
-//   for(let i = 0; i < input.length; i++) {
-//     if(localStorage.getItem('myInput') !== null) {
-//       getInputElement = JSON.parse(localStorage.getItem('myInput'));
-//       input[i].setAttribute('checked', 'true');
-//     } else {
-//       console.log('No hay datos el Local Storage');
-//     }
-//   }
-// }
-// getInput();
-// LOCALSTORAGE
+getSaveData('myInput');
 
 // PETICIÓN A API
-function selectNumberCards() {
+const selectNumberCards = () => {
 
   let url = '';
   for(let i = 0; i < input.length; i++) {
@@ -74,7 +56,7 @@ function selectNumberCards() {
         cards.appendChild(cardItem);
         cardItem.appendChild(image);
 
-        function changeSide() {
+        const changeSide = () => {
           if(image.src === backCard) {
             image.src = data[i].image;
           }else {
