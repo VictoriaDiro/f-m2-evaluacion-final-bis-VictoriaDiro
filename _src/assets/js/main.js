@@ -67,10 +67,10 @@ const selectNumberCards = () => {
         const changeSide = () => {
           if(image.src === backCard) {
             image.src = data[i].image;
-            nameItem.classList.remove('hidden');
+            nameItem.classList.remove('hidden'); // PINTAR NOMBRE
           }else {
             image.src = backCard;
-            nameItem.classList.add('hidden');
+            nameItem.classList.add('hidden'); // PINTAR NOMBRE
           }
         }
 
@@ -83,10 +83,7 @@ const selectNumberCards = () => {
             cardItem.classList.toggle('fav__item');
           }
         }
-
-        // PINTAR NOMBRE
         cardItem.addEventListener('click', selectFav);
-        //cardItem.addEventListener('click', showName);
       }
     });
 }
